@@ -1,0 +1,3 @@
+- name: base.packages | dist-upgrade | upgrades base packages on system
+  apt: upgrade=dist update_cache=yes
+  when: ansible_distribution == "Ubuntu"

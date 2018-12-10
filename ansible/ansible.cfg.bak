@@ -1,0 +1,15 @@
+[defaults]
+inventory      = ./ansible/inventory/hosts
+roles_path    = ./ansible/roles
+host_key_checking = False
+callback_whitelist = profile_tasks
+remote_user = root
+[inventory]
+[privilege_escalation]
+[paramiko_connection]
+[ssh_connection]
+[persistent_connection]
+[accelerate]
+[selinux]
+[colors]
+[diff]

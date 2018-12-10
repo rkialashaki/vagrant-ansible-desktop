@@ -1,0 +1,7 @@
+- name: base.packages | install-packages | install base packages for system
+  package: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - vim
+    - tmux
+    - sysstat 
+    - net-tools

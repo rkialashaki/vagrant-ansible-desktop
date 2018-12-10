@@ -1,0 +1,15 @@
+- hosts: all
+
+  vars:
+    pip_package: python3-pip
+    pip_install_packages:
+      - name: docker
+      - name: awscli
+      - name: scapy
+      - name: virtualenv
+      - name: virtualenvwrapper
+      - name: boto
+      - name: boto3
+      - name: requests
+  roles:
+    - role: geerlingguy.pip

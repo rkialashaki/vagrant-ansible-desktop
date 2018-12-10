@@ -1,0 +1,7 @@
+- name: base.packages | main | Distribution upgrade 
+  include_tasks: dist-upgrade.yml
+  tags: ["install","dist-upgrade"]
+
+- name: base.packages | main | Install packages
+  include_tasks: install-packages.yml
+  tags: ["install"]
