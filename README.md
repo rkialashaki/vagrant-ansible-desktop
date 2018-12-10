@@ -28,4 +28,5 @@ Ansible is included in this repository for vagrant to utilize the `ansible_local
 ## External Role Reference
 
 [geerlingguy.pip](https://galaxy.ansible.com/geerlingguy/pip)
+
 [geerlingguy.docker](https://galaxy.ansible.com/geerlingguy/docker)
