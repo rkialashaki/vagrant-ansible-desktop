@@ -25,6 +25,10 @@ vagrant up
 
 Ansible is included in this repository for vagrant to utilize the `ansible_local` provisioner to manage the system configuration.  External roles are added as submodules.  All roles are added to the `type-vagrant.yml` playbook which is the default playbook vagrant will run (defined in the Vagrantfile)
 
+```
+git submodule update --init --recursive
+```
+
 ## External Role Reference
 
 [geerlingguy.pip](https://galaxy.ansible.com/geerlingguy/pip)
