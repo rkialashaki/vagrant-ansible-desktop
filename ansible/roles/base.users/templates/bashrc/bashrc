@@ -131,7 +131,7 @@ if [ -e $HOME/working/go ]; then
     export PATH=$PATH:$GOPATH/bin
 fi
 
-# go env variables
+# java env variables
 if [ -x /usr/lib/jvm/jdk-11.0.1/bin ]; then
     export JAVA_HOME=/usr/lib/jvm/jdk-11.0.1
     export PATH=$PATH:$JAVA_HOME/bin
