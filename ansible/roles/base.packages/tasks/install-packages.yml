@@ -45,3 +45,11 @@
     - xxd
     - zlib1g
     - zlib1g-dev
+
+- name: base.packages | install-packages | install base snaps for system
+  command: snap install {{ item }} --classic
+  with_items:
+    - kubeadm
+    - kubectl
+    - helm
+
