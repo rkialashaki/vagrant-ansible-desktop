@@ -1,3 +1,5 @@
 .vagrant
 tmp
 vagrant_ssh.sh
+bashrc_local*
+*.retry

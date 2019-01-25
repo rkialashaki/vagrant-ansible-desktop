@@ -1,4 +1,7 @@
 - hosts: all
 
+  vars:
+    docker_compose_version: "1.23.2"
+
   roles:
     - role: geerlingguy.docker

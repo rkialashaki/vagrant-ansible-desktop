@@ -1,0 +1,20 @@
+# Prompt Style
+# Escape code
+ESC="\033"
+
+# Color codes
+BLUE="\[$ESC[1;34m\]"
+BROWN="\[$ESC[0;33m\]"
+CYAN="\[$ESC[1;36m\]"
+LCYAN="\[$ESC[0;36m\]"
+GREEN="\[$ESC[1;29m\]"
+LGREEN="\[$ESC[1;32m\]"
+NONE="\[$ESC[0m\]"
+PURPLE="\[$ESC[1;35m\]"
+RED="\[$ESC[1;31m\]"
+YELLOW="\[$ESC[1;33m\]"
+
+# Prompt Style
+PS1="${LGREEN}[\u@${YELLOW}\h${LGREEN}] ${CYAN}\d \@ ${BLUE}\$(tty)\n${BROWN}[${PURPLE}\w${BROWN}] ${PURPLE}\n${LGREEN}\$ ${NONE}"
+
+export PS1

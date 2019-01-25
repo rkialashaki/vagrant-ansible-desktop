@@ -1,0 +1,35 @@
+galaxy_info:
+  author: rkialashaki
+  company: none
+  description: "Configures user settings"
+  min_ansible_version: 2.4
+  license: MIT
+  platforms:
+  - name: Fedora
+    versions:
+      - 24
+      - 25
+      - 26
+      - 27
+      - 28
+
+  - name: EL
+    versions:
+      - 7
+
+  - name: Debian
+    versions:
+      - wheezy
+      - jessie
+      - stretch
+
+  - name: Ubuntu
+    versions:
+      - trusty
+      - xenial
+      - bionic
+
+  galaxy_tags:
+    - system
+
+dependencies: []

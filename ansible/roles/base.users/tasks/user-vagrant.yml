@@ -1,0 +1,52 @@
+- name: base.users | user-vagrant.yml | Add vagrant user to docker group  
+  user: name=vagrant
+        groups=docker
+        append=yes
+
+- name: base.user | user-vagrant.yml | Create development directories
+  file:
+    path: /home/vagrant/working/{{ item.directory }}
+    state: directory
+    owner: vagrant
+    group: vagrant
+    mode: 0755
+  with_items:
+    - { directory: "go/src" }
+    - { directory: "go/bin" }
+    - { directory: "go/pkg" }
+    - { directory: "python/envs" }
+
+- name: base.users | user-vagrant.yml | Git clone bash prompt
+  git:
+    repo: https://git@github.com/rkialashaki/bash_prompt.git
+    dest: /home/vagrant/bash_prompt
+  become: yes
+  become_user: vagrant
+
+- name: base.users | user-vagrant.yml | Git clone .vim
+  git:
+    repo: https://git@github.com/rkialashaki/.vim.git
+    dest: /home/vagrant/.vim
+  become: yes
+  become_user: vagrant
+
+- name: base.users | user-vagrant.yml | Symlink .vimrc
+  file:
+    src: /home/vagrant/.vim/.vimrc
+    dest: /home/vagrant/.vimrc
+    owner: vagrant
+    group: vagrant
+    state: link
+
+- name: base.users | user-vagrant.yml | Setup vim env via script
+  shell: ./vim-env-setup.sh >> /home/vagrant/.vim/vim-env-setup.`date +%s`.log
+  args:
+    chdir: /home/vagrant/.vim
+  become: yes
+  become_user: vagrant
+
+- name: base.users | user-vagrant.yml | Set up bashrc.d
+  copy: src={{bashrc_item}} dest=/home/vagrant/.{{bashrc_item|basename}} owner=vagrant group=vagrant
+  with_fileglob: "{{ role_path }}/templates/bashrc/*"
+  loop_control:
+    loop_var: bashrc_item

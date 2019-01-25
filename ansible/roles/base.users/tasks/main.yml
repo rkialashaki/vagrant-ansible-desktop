@@ -1,0 +1,3 @@
+- name: base.users | main | User vagrant 
+  include_tasks: user-vagrant.yml
+  tags: ["install"]
