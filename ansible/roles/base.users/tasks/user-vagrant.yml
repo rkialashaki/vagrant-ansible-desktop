@@ -16,13 +16,6 @@
     - { directory: "go/pkg" }
     - { directory: "python/envs" }
 
-- name: base.users | user-vagrant.yml | Git clone bash prompt
-  git:
-    repo: https://git@github.com/rkialashaki/bash_prompt.git
-    dest: /home/vagrant/bash_prompt
-  become: yes
-  become_user: vagrant
-
 - name: base.users | user-vagrant.yml | Git clone .vim
   git:
     repo: https://git@github.com/rkialashaki/.vim.git
