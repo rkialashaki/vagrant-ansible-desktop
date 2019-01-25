@@ -34,3 +34,14 @@ git submodule update --init --recursive
 [geerlingguy.pip](https://galaxy.ansible.com/geerlingguy/pip)
 
 [geerlingguy.docker](https://galaxy.ansible.com/geerlingguy/docker)
+
+
+## Know Issues
+
+If you are using a Windows host, you may run into an issue with file formats
+for the ansible templates and files.  If this happens, be sure that you are
+using unix style line endings.  i.e. in vim:
+
+```
+set ff=unix
+```
