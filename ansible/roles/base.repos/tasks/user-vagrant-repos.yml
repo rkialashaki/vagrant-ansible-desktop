@@ -10,7 +10,7 @@
 
 - name: base.repos | user-vagrant-repos.yml | Git clone {{ item }}
   git:
-    repo: https://git@github.com/hashicorp/{{ item }}.git
+    repo: https://github.com/hashicorp/{{ item }}.git
     dest: /home/vagrant/working/go/src/github.com/hashicorp/{{ item }}
   become: yes
   become_user: vagrant

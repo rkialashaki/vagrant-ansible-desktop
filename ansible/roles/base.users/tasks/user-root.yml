@@ -1,6 +1,6 @@
 - name: base.users | user-root.yml | Git clone .vim
   git:
-    repo: https://git@github.com/rkialashaki/.vim.git
+    repo: https://github.com/rkialashaki/.vim.git
     dest: /root/.vim
   become: yes
   become_user: root
