@@ -1,0 +1,27 @@
+- name: base.users | user-root.yml | Git clone .vim
+  git:
+    repo: https://git@github.com/rkialashaki/.vim.git
+    dest: /root/.vim
+  become: yes
+  become_user: root
+
+- name: base.users | user-root.yml | Symlink .vimrc
+  file:
+    src: /root/.vim/.vimrc
+    dest: /root/.vimrc
+    owner: root
+    group: root
+    state: link
+
+- name: base.users | user-root.yml | Setup vim env via script
+  shell: ./vim-env-setup.sh >> /root/.vim/vim-env-setup.`date +%s`.log
+  args:
+    chdir: /root/.vim
+  become: yes
+  become_user: root
+
+- name: base.users | user-root.yml | Set up bashrc.d
+  copy: src={{bashrc_item}} dest=/root/.{{bashrc_item|basename}} owner=root group=root
+  with_fileglob: "{{ role_path }}/templates/user_root/bashrc/*"
+  loop_control:
+    loop_var: bashrc_item

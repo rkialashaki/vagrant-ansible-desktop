@@ -1,0 +1,6 @@
+- name: base.packages | install-go.yml | Download and install go from tarball
+  unarchive:
+    src: https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz
+    dest: /usr/local
+    remote_src: yes
+  tags: ["go"]

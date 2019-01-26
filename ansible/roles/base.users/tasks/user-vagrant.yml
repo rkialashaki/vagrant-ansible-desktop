@@ -2,6 +2,7 @@
   user: name=vagrant
         groups=docker
         append=yes
+  tags: ["install", "user-vagrant"]
 
 - name: base.user | user-vagrant.yml | Create development directories
   file:
@@ -15,6 +16,7 @@
     - { directory: "go/bin" }
     - { directory: "go/pkg" }
     - { directory: "python/envs" }
+  tags: ["install", "user-vagrant"]
 
 - name: base.users | user-vagrant.yml | Git clone .vim
   git:
@@ -22,6 +24,7 @@
     dest: /home/vagrant/.vim
   become: yes
   become_user: vagrant
+  tags: ["install", "user-vagrant"]
 
 - name: base.users | user-vagrant.yml | Symlink .vimrc
   file:
@@ -30,6 +33,7 @@
     owner: vagrant
     group: vagrant
     state: link
+  tags: ["install", "user-vagrant"]
 
 - name: base.users | user-vagrant.yml | Setup vim env via script
   shell: ./vim-env-setup.sh >> /home/vagrant/.vim/vim-env-setup.`date +%s`.log
@@ -37,9 +41,11 @@
     chdir: /home/vagrant/.vim
   become: yes
   become_user: vagrant
+  tags: ["install", "user-vagrant"]
 
 - name: base.users | user-vagrant.yml | Set up bashrc.d
   copy: src={{bashrc_item}} dest=/home/vagrant/.{{bashrc_item|basename}} owner=vagrant group=vagrant
-  with_fileglob: "{{ role_path }}/templates/bashrc/*"
+  with_fileglob: "{{ role_path }}/templates/user_vagrant/bashrc/*"
   loop_control:
     loop_var: bashrc_item
+  tags: ["install", "user-vagrant"]

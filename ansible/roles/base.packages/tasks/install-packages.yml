@@ -12,8 +12,6 @@
     - build-essential
     - git
     - gnupg
-    - golang
-    - golang-go
     - jq
     - lxd
     - nmap

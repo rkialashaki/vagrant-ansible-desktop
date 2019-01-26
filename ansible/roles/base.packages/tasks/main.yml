@@ -5,3 +5,7 @@
 - name: base.packages | main | Install packages
   include_tasks: install-packages.yml
   tags: ["install"]
+
+- name: base.packages | main | Install go
+  include_tasks: install-go.yml
+  tags: ["install", "go"]

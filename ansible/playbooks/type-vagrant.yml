@@ -3,3 +3,4 @@
 - import_playbook: pip3.yml
 - import_playbook: docker.yml
 - import_playbook: base.users.yml
+- import_playbook: base.repos.yml
