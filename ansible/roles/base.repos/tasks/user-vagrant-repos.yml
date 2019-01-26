@@ -1,4 +1,4 @@
-- name: base.repos | user-vagrant-repos.yml | Clone base repo's
+- name: base.repos | user-vagrant-repos.yml | Clone base repos
   file:
     path: /home/vagrant/working/go/src/{{ item.directory }}
     state: directory
@@ -8,7 +8,7 @@
   with_items:
     - { directory: "github.com/hashicorp" }
 
-- name: base.repos | user-vagrant-repos.yml | Git clone {{ item }}
+- name: base.repos | user-vagrant-repos.yml | Git clone hashicorp repos for development
   git:
     repo: https://github.com/hashicorp/{{ item }}.git
     dest: /home/vagrant/working/go/src/github.com/hashicorp/{{ item }}
