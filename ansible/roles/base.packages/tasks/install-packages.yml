@@ -47,7 +47,9 @@
 - name: base.packages | install-packages | install base snaps for system
   command: snap install {{ item }} --classic
   with_items:
+    - go
     - kubeadm
     - kubectl
     - helm
+    - postman
 
