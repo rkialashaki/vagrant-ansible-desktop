@@ -2,6 +2,7 @@
 
   vars:
     docker_compose_version: "1.23.2"
+    docker_apt_release_channel: "stable edge test"
 
   roles:
     - role: geerlingguy.docker

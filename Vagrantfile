@@ -39,7 +39,8 @@
 Vagrant.configure('2') do |config|
 
   #vm_box = 'ubuntu/zesty64'
-  vm_box = 'ubuntu/1804-desktop'
+  #vm_box = 'ubuntu/1804-desktop'
+  vm_box = 'ubuntu/1904-desktop'
   #config.ssh.private_key_path = ['./.vagrant/ssh/vagrant_rsa']
   #config.ssh.insert_key = false
   #config.ssh.forward_agent = true
@@ -60,7 +61,7 @@ Vagrant.configure('2') do |config|
     #ubdesktop.vm.provision "shell", inline: $userland_install, privileged: false
     ubdesktop.vm.provider "virtualbox" do |vb|
       vb.name = "ubdesktop"
-      vb.memory = "2048"
+      vb.memory = "8192"
       vb.cpus = 2
       vb.customize [ "modifyvm", :id, "--vram", "256" ]
       vb.customize [ "modifyvm", :id, "--accelerate3d", "on" ]
