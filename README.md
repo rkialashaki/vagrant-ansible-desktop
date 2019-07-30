@@ -6,11 +6,12 @@ Vagrant Ansible Desktop is a vagrant managed desktop environment in virtualbox m
 
 The vagrant box image is built with packer from [boxcutter/ubuntu](https://github.com/boxcutter/ubuntu)
 
-In this repo you will find `boxcutter/ubuntu1904-desktop.json` which you can copy over to your clone of boxcutter to build the base box.
+In this repo you will find `boxcutter/ubuntu1904-desktop.json` and `boxcutter/tpl/vagrantfile-ubuntu1904-desktop.tpl` which you can copy over to your clone of boxcutter to build the base box.
 
 ```
 git clone https://github.com/boxcutter/ubuntu.git
 cp -a boxcutter/ubuntu1904-desktop.json ubuntu/
+cp -a boxcutter/tpl/vagrantfile-ubuntu1904-desktop.tpl ubuntu/tpl/
 cd ubuntu
 packer build -only=virtualbox-iso -var-file=ubuntu1904-desktop.json ubuntu.json
 vagrant box add --name ubuntu/1904-desktop box/virtualbox/ubuntu1904-desktop-0.1.0.box
