@@ -22,8 +22,10 @@
   git:
     repo: https://github.com/rkialashaki/.vim.git
     dest: /home/vagrant/.vim
+    update: no
   become: yes
   become_user: vagrant
+  #ignore_errors: yes
   tags: ["install", "user-vagrant"]
 
 - name: base.users | user-vagrant.yml | Symlink .vimrc
@@ -36,12 +38,21 @@
   tags: ["install", "user-vagrant"]
 
 - name: base.users | user-vagrant.yml | Setup vim env via script
-  shell: ./vim-env-setup.sh >> /home/vagrant/.vim/vim-env-setup.`date +%s`.log
+  shell: ./vim-env-setup.sh >> /home/vagrant/.vim/vim-env-setup.log
   args:
     chdir: /home/vagrant/.vim
+    creates: /home/vagrant/.vim/vim-env-setup.log
   become: yes
   become_user: vagrant
   tags: ["install", "user-vagrant"]
+
+#- name: base.users | user-vagrant.yml | Install pyenv
+#  shell: curl https://pyenv.run | bash
+#  args:
+#    chdir: /home/vagrant
+#  become: yes
+#  become_user: vagrant
+#  tags: ["install", "user-vagrant", "python"]
 
 - name: base.users | user-vagrant.yml | Set up bashrc.d
   copy: src={{bashrc_item}} dest=/home/vagrant/.{{bashrc_item|basename}} owner=vagrant group=vagrant

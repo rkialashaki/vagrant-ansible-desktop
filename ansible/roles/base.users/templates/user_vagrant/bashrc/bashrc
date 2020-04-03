@@ -154,3 +154,11 @@ fi
 
 # rvm env variables
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# pyenv
+#if [ -e "$HOME/.pyenv/bin" ]; then
+#    export PATH="$HOME/.pyenv/bin:$PATH"
+#    eval "$(pyenv init -)"
+#    eval "$(pyenv virtualenv-init -)"
+#fi
+# end pyenv

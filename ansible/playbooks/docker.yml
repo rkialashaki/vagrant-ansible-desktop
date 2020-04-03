@@ -1,8 +1,9 @@
 - hosts: all
 
   vars:
-    docker_compose_version: "1.24.1"
-    docker_apt_release_channel: "stable edge test"
+    #docker_compose_version: "1.24.1"
+    #docker_apt_release_channel: "stable edge test"
+    docker_apt_repository: "deb [arch=amd64] https://download.docker.com/linux/ubuntu eoan stable edge test"
 
   roles:
     - role: geerlingguy.docker

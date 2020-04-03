@@ -40,7 +40,7 @@ Vagrant.configure('2') do |config|
 
   #vm_box = 'ubuntu/zesty64'
   #vm_box = 'ubuntu/1804-desktop'
-  vm_box = 'ubuntu/1904-desktop'
+  vm_box = 'ubuntu-rk/2004-desktop'
   #config.ssh.private_key_path = ['./.vagrant/ssh/vagrant_rsa']
   #config.ssh.insert_key = false
   #config.ssh.forward_agent = true
@@ -61,18 +61,23 @@ Vagrant.configure('2') do |config|
     #ubdesktop.vm.provision "shell", inline: $userland_install, privileged: false
     ubdesktop.vm.provider "virtualbox" do |vb|
       vb.name = "ubdesktop"
-      vb.memory = "8192"
+      vb.memory = "4096"
       vb.cpus = 2
-      vb.customize [ "modifyvm", :id, "--vram", "256" ]
+      vb.customize [ "modifyvm", :id, "--vram", "64" ]
       vb.customize [ "modifyvm", :id, "--accelerate3d", "on" ]
       vb.customize [ "modifyvm", :id, "--usb", "on", "--usbxhci", "on" ] #USB3
       #vb.customize [ "modifyvm", :id, "--usb", "on", "--usbehci", "on" ] #USB2
     end
-    ubdesktop.vm.provision "ansible_local" do |ansible|
-    #    ansible.verbose = "v"
+    #ubdesktop.vm.provision "ansible_local" do |ansible|
+    ubdesktop.vm.provision "ansible" do |ansible|
+        ansible.verbose = "v"
+    #    ansible.install_mode = "pip"
+    #    ansible.pip_install_cmd = "curl https://bootstrap.pypa.io/get-pip.py | sudo python"
+        ansible.config_file = "ansible/ansible.cfg"
         ansible.become = true
         ansible.playbook = "ansible/playbooks/type-vagrant.yml"
-        ansible.galaxy_roles_path = "/vagrant/ansible/roles"
+    #    ansible.galaxy_roles_path = "/vagrant/ansible/roles"
+        ansible.galaxy_roles_path = "ansible/roles"
     end
   end
 
