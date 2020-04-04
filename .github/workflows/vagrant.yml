@@ -8,11 +8,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
     - name: Install packages
       run: |
-        sudo apt-get -y install virtualbox
+        sudo apt-get -y install vagrant virtualbox
     - name: Checkout local repo
       uses: actions/checkout@v2 
     - name: Checkout boxcutter repo
@@ -28,9 +28,13 @@ jobs:
       run: |
         cd ubuntu
         packer build -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
-    - name: Use oxr463/setup-vagrant
-      uses: oxr463/setup-vagrant@0.0.1-alpha
-      with:
-        exec: |
+    - name: Build vagrant
+      run: |
           vagrant box add --name ubuntu-rk/2004-desktop box/virtualbox/ubuntu2004-desktop-0.1.0.box
           vagrant up
+#    - name: Use oxr463/setup-vagrant
+#      uses: oxr463/setup-vagrant@0.0.1-alpha
+#      with:
+#        exec: |
+#          vagrant box add --name ubuntu-rk/2004-desktop box/virtualbox/ubuntu2004-desktop-0.1.0.box
+#          vagrant up
