@@ -26,11 +26,14 @@ jobs:
         cp -a boxcutter/ubuntu2004-desktop.json ubuntu/
         cp -a boxcutter/tpl/vagrantfile-ubuntu2004-desktop.tpl ubuntu/tpl/
     - name: Build packer box
-      uses: riznob/packer-build-action@v1.1
-      with:
-        templateFile: 'ubuntu.json'
-        varFile: 'ubuntu2004-desktop.json'
-        workingDir: 'ubuntu'
+      run: |
+        cd ubuntu
+        xvfb-run docker run -t hashicorp/packer:light build -debug -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
+#      uses: riznob/packer-build-action@v1.1
+#      with:
+#        templateFile: 'ubuntu.json'
+#        varFile: 'ubuntu2004-desktop.json'
+#        workingDir: 'ubuntu'
 #      run: |
 #        script
 #        cd ubuntu
