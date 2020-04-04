@@ -27,10 +27,9 @@ jobs:
         cp -a boxcutter/tpl/vagrantfile-ubuntu2004-desktop.tpl ubuntu/tpl/
     - name: Build packer box
       run: |
-        Xvfb :99 &
-        export DISPLAY=:99
+        script
         cd ubuntu
-        PACKER_LOG=10 packer build -debug -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
+        xvfb-run PACKER_LOG=10 packer build -debug -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
     - name: Build vagrant
       run: |
           vagrant box add --name ubuntu-rk/2004-desktop box/virtualbox/ubuntu2004-desktop-0.1.0.box
