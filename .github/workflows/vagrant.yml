@@ -28,7 +28,7 @@ jobs:
     - name: Build packer box
       run: |
         cd ubuntu
-        packer build -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
+        packer build -only=virtualbox-iso -var 'headless=true' -var-file=ubuntu2004-desktop.json ubuntu.json
     - name: Build vagrant
       run: |
           vagrant box add --name ubuntu-rk/2004-desktop box/virtualbox/ubuntu2004-desktop-0.1.0.box
