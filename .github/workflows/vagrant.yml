@@ -29,7 +29,7 @@ jobs:
       run: |
         script
         cd ubuntu
-        xvfb-run PACKER_LOG=10 packer build -debug -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
+        PACKER_LOG=10 xvfb-run packer build -debug -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
     - name: Build vagrant
       run: |
           vagrant box add --name ubuntu-rk/2004-desktop box/virtualbox/ubuntu2004-desktop-0.1.0.box
