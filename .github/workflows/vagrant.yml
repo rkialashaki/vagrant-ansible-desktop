@@ -13,7 +13,8 @@ jobs:
     - name: Install packages
       run: |
         sudo apt-get update
-        sudo apt-get -y install vagrant virtualbox
+        sudo apt-get -y install vagrant virtualbox xfce4 slim
+        sudo service slim start
     - name: Checkout local repo
       uses: actions/checkout@v2 
     - name: Checkout boxcutter repo
@@ -28,7 +29,7 @@ jobs:
     - name: Build packer box
       run: |
         cd ubuntu
-        packer build -only=virtualbox-iso -var 'headless=true' -var-file=ubuntu2004-desktop.json ubuntu.json
+        packer build -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
     - name: Build vagrant
       run: |
           vagrant box add --name ubuntu-rk/2004-desktop box/virtualbox/ubuntu2004-desktop-0.1.0.box
