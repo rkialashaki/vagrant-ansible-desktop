@@ -2,9 +2,9 @@ name: "Build Vagrant"
 
 on:
   push:
-    branches: [ ub2004 ]
+    branches: [ master ]
   pull_request:
-    branches: [ ub2004 ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -31,17 +31,17 @@ jobs:
     - name: Validate packer files
       run: |
         PACKER_LOG=10 packer validate -syntax-only -var-file="boxcutter/ubuntu2004-desktop.json" boxcutter/ubuntu.json
-    - name: Build vagrant
-      uses: rkialashaki/setup-vagrant@0.0.1-alpha
-      with:
-        exec: |
-          vagrant up
-#      run: |
-#        script
-#        cd ubuntu
-#        PACKER_LOG=10 xvfb-run packer build -debug -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
 #    - name: Build vagrant
-#      run: |
-#          vagrant box add --name ubuntu-rk/2004-desktop box/virtualbox/ubuntu2004-desktop-0.1.0.box
+#      uses: rkialashaki/setup-vagrant@0.0.1-alpha
+#      with:
+#        exec: |
 #          vagrant up
-##    - name: Use oxr463/setup-vagrant
+##      run: |
+##        script
+##        cd ubuntu
+##        PACKER_LOG=10 xvfb-run packer build -debug -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
+##    - name: Build vagrant
+##      run: |
+##          vagrant box add --name ubuntu-rk/2004-desktop box/virtualbox/ubuntu2004-desktop-0.1.0.box
+##          vagrant up
+###    - name: Use oxr463/setup-vagrant
