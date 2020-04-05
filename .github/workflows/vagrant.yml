@@ -10,10 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Install packages
-      run: |
-        sudo apt-get update
-        sudo apt-get -y install vagrant virtualbox-dkms xvfb
+#    - name: Install packages
+#      run: |
+#        sudo apt-get update
+#        sudo apt-get -y install vagrant virtualbox-dkms xvfb
     - name: Checkout local repo
       uses: actions/checkout@v2 
     - name: Checkout boxcutter repo
@@ -30,10 +30,7 @@ jobs:
         cp -a boxcutter/tpl/vagrantfile-ubuntu2004-desktop.tpl ubuntu/tpl/
     - name: Validate packer files
       run: |
-        find boxcutter -name "*.json" | while read filename
-        do
-          PACKER_LOG=10 packer validate -syntax-only "$filename"
-        done
+        PACKER_LOG=10 packer validate -syntax-only -var-file="boxcutter/ubuntu2004-desktop.json" boxcutter/ubuntu.json
     - name: Build vagrant
       uses: oxr463/setup-vagrant@0.0.1-alpha
       with:
