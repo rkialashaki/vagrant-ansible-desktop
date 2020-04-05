@@ -32,7 +32,7 @@ jobs:
       run: |
         PACKER_LOG=10 packer validate -syntax-only -var-file="boxcutter/ubuntu2004-desktop.json" boxcutter/ubuntu.json
     - name: Build vagrant
-      uses: oxr463/setup-vagrant@0.0.1-alpha
+      uses: rkialashaki/setup-vagrant@0.0.1-alpha
       with:
         exec: |
           vagrant up
