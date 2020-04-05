@@ -2,7 +2,7 @@ name: "Build Vagrant"
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, ub2004 ]
   pull_request:
     branches: [ master, ub2004 ]
 
