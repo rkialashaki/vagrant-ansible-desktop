@@ -1,0 +1,16 @@
+{
+  "_comment": "Build with `packer build -var-file=ubuntu2004-desktop.json ubuntu.json`",
+  "vm_name": "ubuntu2004-desktop",
+  "version": "20200404",
+  "desktop": "true",
+  "locale": "en_US.UTF-8",
+  "cpus": "1",
+  "disk_size": "130048",
+  "iso_checksum": "9d0e98b196581938cd7f23bc4d533ab104bc427df458a695b3529d36e3940b6c",
+  "iso_checksum_type": "sha256",
+  "iso_name": "iso/focal-server-amd64.iso",
+  "iso_url": "http://cdimage.ubuntu.com/ubuntu-server/daily/20200404/focal-server-amd64.iso",
+  "memory": "1024",
+  "preseed" : "preseed-desktop.cfg",
+  "vagrantfile_template": "tpl/vagrantfile-ubuntu2004-desktop.tpl"
+}

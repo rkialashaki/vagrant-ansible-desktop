@@ -2,8 +2,10 @@
   git:
     repo: https://github.com/rkialashaki/.vim.git
     dest: /root/.vim
+    update: no
   become: yes
   become_user: root
+  #ignore_errors: yes
 
 - name: base.users | user-root.yml | Symlink .vimrc
   file:
@@ -14,9 +16,10 @@
     state: link
 
 - name: base.users | user-root.yml | Setup vim env via script
-  shell: ./vim-env-setup.sh >> /root/.vim/vim-env-setup.`date +%s`.log
+  shell: ./vim-env-setup.sh >> /root/.vim/vim-env-setup.log
   args:
     chdir: /root/.vim
+    creates: /root/.vim/vim-env-setup.log
   become: yes
   become_user: root
 

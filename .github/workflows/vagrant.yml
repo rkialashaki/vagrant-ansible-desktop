@@ -2,14 +2,18 @@ name: "Build Vagrant"
 
 on:
   push:
-    branches: [ ub2004 ]
+    branches: [ master, ub2004 ]
   pull_request:
-    branches: [ ub2004 ]
+    branches: [ master, ub2004 ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+#    - name: Install packages
+#      run: |
+#        sudo apt-get update
+#        sudo apt-get -y install vagrant virtualbox-dkms xvfb
     - name: Checkout local repo
       uses: actions/checkout@v2 
     - name: Checkout boxcutter repo
@@ -17,17 +21,27 @@ jobs:
       with:
         repository: boxcutter/ubuntu 
         path: ubuntu
+    - name: Init git submodules
+      run: |
+        git submodule update --init --recursive
     - name: Copy boxcutter ubuntu templates
       run: |
         cp -a boxcutter/ubuntu2004-desktop.json ubuntu/
         cp -a boxcutter/tpl/vagrantfile-ubuntu2004-desktop.tpl ubuntu/tpl/
-    - name: Build packer box
+    - name: Validate packer files
       run: |
-        cd ubuntu
-        packer build -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
-    - name: Use oxr463/setup-vagrant
-      uses: oxr463/setup-vagrant@0.0.1-alpha
-      with:
-        exec: |
-          vagrant box add --name ubuntu-rk/2004-desktop box/virtualbox/ubuntu2004-desktop-0.1.0.box
-          vagrant up
+        PACKER_LOG=10 packer validate -syntax-only -var-file="boxcutter/ubuntu2004-desktop.json" boxcutter/ubuntu.json
+#    - name: Build vagrant
+#      uses: rkialashaki/setup-vagrant@0.0.1-alpha
+#      with:
+#        exec: |
+#          vagrant up
+##      run: |
+##        script
+##        cd ubuntu
+##        PACKER_LOG=10 xvfb-run packer build -debug -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
+##    - name: Build vagrant
+##      run: |
+##          vagrant box add --name ubuntu-rk/2004-desktop box/virtualbox/ubuntu2004-desktop-0.1.0.box
+##          vagrant up
+###    - name: Use oxr463/setup-vagrant
