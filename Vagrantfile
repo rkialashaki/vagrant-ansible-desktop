@@ -40,7 +40,7 @@ Vagrant.configure('2') do |config|
 
   #vm_box = 'ubuntu/zesty64'
   #vm_box = 'ubuntu/1804-desktop'
-  vm_box = 'ubuntu-rk/2004-desktop'
+  vm_box = 'blueflame/ubuntu2004-desktop'
   #config.ssh.private_key_path = ['./.vagrant/ssh/vagrant_rsa']
   #config.ssh.insert_key = false
   #config.ssh.forward_agent = true
