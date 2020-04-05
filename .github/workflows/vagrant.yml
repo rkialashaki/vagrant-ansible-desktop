@@ -30,8 +30,10 @@ jobs:
         cp -a boxcutter/tpl/vagrantfile-ubuntu2004-desktop.tpl ubuntu/tpl/
     - name: Validate packer files
       run: |
-        cd ubuntu
-        PACKER_LOG=10 packer validate -syntax-only *.json
+        find boxcutter -name "*.json" | while read filename
+        do
+          PACKER_LOG=10 packer validate -syntax-only "$filename"
+        done
     - name: Build vagrant
       uses: oxr463/setup-vagrant@0.0.1-alpha
       with:
