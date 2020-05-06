@@ -1,4 +1,51 @@
 - hosts: all
 
+  vars:
+    go_version: 1.14.2
+    packages:
+      - vim
+      - tmux
+      - sysstat
+      - net-tools
+      - curl
+      - sysdig
+      - htop
+      - composer
+      - build-essential
+      - git
+      - gnupg
+      - jq
+      - nmap
+      - netcat-openbsd
+      - nodejs
+      - npm
+      - openvpn
+      - p7zip
+      - pv
+      - rar
+      - rsync
+      - socat
+      - sqlite3
+      - tor
+      - tree
+      - unrar
+      - whois
+      - xxd
+      - zlib1g
+      - zlib1g-dev
+      - docker.io
+      #- lxd
+      #- php7.2-cli
+      #- php7.2-common
+      #- php7.2-curl
+      #- php7.2-json
+      #- php7.2-mbstring
+      #- php7.2-opcache
+      #- php7.2-readline
+      #- php7.2-bcmath
+      #- php7.2-xml
+      #- php7.2-intl
+      #- php7.2-phpdbg
+
   roles:
     - role: base.packages
