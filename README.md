@@ -1,5 +1,5 @@
 # Vagrant Ansible Desktop
-[![Build Vagrant](https://github.com/rkialashaki/vagrant-ansible-desktop/workflows/Build%20Vagrant/badge.svg?branch=master)](https://github.com/rkialashaki/setup-vagrant/actions)
+[![Build Vagrant](https://github.com/rkialashaki/vagrant-ansible-desktop/workflows/Build%20Vagrant/badge.svg?branch=master)](https://github.com/rkialashaki/vagrant-ansible-desktop/actions)
 
 Vagrant Ansible Desktop is a vagrant managed desktop environment in virtualbox meant for development.  It runs python with pip and docker by default.  It is meant to provide a working ubuntu linux based development environment that is repeatable between work environments.  
 
@@ -7,15 +7,15 @@ Vagrant Ansible Desktop is a vagrant managed desktop environment in virtualbox m
 
 The vagrant box image is built with packer from [boxcutter/ubuntu](https://github.com/boxcutter/ubuntu)
 
-In this repo you will find `boxcutter/ubuntu1904-desktop.json` and `boxcutter/tpl/vagrantfile-ubuntu1904-desktop.tpl` which you can copy over to your clone of boxcutter to build the base box.
+In this repo you will find `boxcutter/ubuntu2004-desktop.json` and `boxcutter/tpl/vagrantfile-ubuntu2004-desktop.tpl` which you can copy over to your clone of boxcutter to build the base box.
 
 ```
 git clone https://github.com/boxcutter/ubuntu.git
-cp -a boxcutter/ubuntu1904-desktop.json ubuntu/
-cp -a boxcutter/tpl/vagrantfile-ubuntu1904-desktop.tpl ubuntu/tpl/
+cp -a boxcutter/ubuntu2004-desktop.json ubuntu/
+cp -a boxcutter/tpl/vagrantfile-ubuntu2004-desktop.tpl ubuntu/tpl/
 cd ubuntu
-packer build -only=virtualbox-iso -var-file=ubuntu1904-desktop.json ubuntu.json
-vagrant box add --name ubuntu/1904-desktop box/virtualbox/ubuntu1904-desktop-0.1.0.box
+packer build -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
+vagrant box add --name ubuntu/2004-desktop box/virtualbox/ubuntu2004-desktop-0.1.0.box
 ```
 
 # Startup
