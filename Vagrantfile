@@ -65,6 +65,7 @@ Vagrant.configure('2') do |config|
       vb.cpus = 2
       vb.customize [ "modifyvm", :id, "--vram", "64" ]
       vb.customize [ "modifyvm", :id, "--accelerate3d", "on" ]
+      vb.customize [ "modifyvm", :id, "--graphicscontroller", "vmsvga" ]
       vb.customize [ "modifyvm", :id, "--usb", "on", "--usbxhci", "on" ] #USB3
       #vb.customize [ "modifyvm", :id, "--usb", "on", "--usbehci", "on" ] #USB2
     end
