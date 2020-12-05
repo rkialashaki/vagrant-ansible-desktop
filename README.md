@@ -14,6 +14,7 @@ git clone https://github.com/boxcutter/ubuntu.git
 cp -a boxcutter/ubuntu2004-desktop.json ubuntu/
 cp -a boxcutter/tpl/vagrantfile-ubuntu2004-desktop.tpl ubuntu/tpl/
 cd ubuntu
+export ATLAS_TOKEN="<vagrant_cloud_api_token>"
 packer build -only=virtualbox-iso -var-file=ubuntu2004-desktop.json ubuntu.json
 vagrant box add --name ubuntu/2004-desktop box/virtualbox/ubuntu2004-desktop-0.1.0.box
 ```
