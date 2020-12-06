@@ -1,0 +1,30 @@
+#cloud-config
+autoinstall:
+  version: 1
+  early-commands:
+    - systemctl stop ssh
+  locale: en_US
+  keyboard:
+    layout: en
+    variant: us
+  network:
+    network:
+      version: 2
+      ethernets:
+        eth0:
+          dhcp4: true
+          dhcp-identifier: mac
+  storage:
+    layout:
+      name: lvm
+  identity:
+    hostname: ubuntu
+    username: vagrant
+    password: "$6$rounds=4096$bqSZiYlXfs$AyoeGM6hcXHyeUgMUhauUymZaWoKlE/J8WNKmaiYOMcRC0eigw8vhzWk0RKDPzoFMhyIDAzsgvXc.bBG6R8uJ0"
+  ssh:
+    install-server: yes
+  user-data:
+    disable_root: false
+  late-commands:
+    #- 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'
+    - echo 'vagrant ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
