@@ -1,1 +1,0 @@
-vagrant package --base ubdesktop
