@@ -2,9 +2,9 @@ name: "Build Vagrant"
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
 #        sudo apt-get update
 #        sudo apt-get -y install vagrant virtualbox-dkms xvfb
     - name: Checkout local repo
-      uses: actions/checkout@v2 
+      uses: actions/checkout@v2
     - name: Checkout boxcutter repo
       uses: actions/checkout@v2
       with:
